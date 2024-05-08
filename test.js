@@ -160,9 +160,8 @@ $("#cusDelete").on('click',() => {
 
 
 ////////////////////////////////////////////////////////
-
-var items = []
-let record;
+import ItemModel from "../model/itemModel.js";
+import {items} from "../db/itemDb.js";
 
 function loadAllItems() {
 
@@ -171,10 +170,10 @@ function loadAllItems() {
     items.map((item, index)=>{
 
         var record = `<tr>
-                  <td class="itemId-value">${item.$id}</td>
-                  <td class="itemDescription-value">${item.$desc}</td>
-                  <td class="itemQty-value">${item.$qty}</td>
-                  <td class="itemPrice-value">${item.$price}</td>
+                  <td class="itemId-value">${item._id}</td>
+                  <td class="itemDescription-value">${item._description}</td>
+                  <td class="itemQty-value">${item._qty}</td>
+                  <td class="itemPrice-value">${item._price}</td>
                 </tr>`;
 
         $("#itemTBody").append(record)
@@ -223,12 +222,7 @@ $("#itemSave").on('click',() => {
     console.log(qty);
     console.log(price)
 
-    let itemValues={
-        $id: id,
-        $desc: desc,
-        $qty: qty,
-        $price: price
-    }
+    let itemValues= new ItemModel(id, desc, qty, price);
 
     items.push(itemValues)
 
@@ -254,10 +248,10 @@ $("#itemUpdate").on('click',() => {
     console.log(items);
     console.log(itemObj);
 
-    itemObj.$id = id
-    itemObj.$desc = desc
-    itemObj.$qty = qty
-    itemObj.$price = price
+    itemObj._id = id
+    itemObj._description = desc
+    itemObj._qty = qty
+    itemObj._price = price
 
     loadAllItems();
     $("#itemClear").click();
