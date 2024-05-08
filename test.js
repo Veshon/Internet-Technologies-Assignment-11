@@ -114,7 +114,7 @@ $("#cusSubmit").on('click',() => {
     console.log(mobile)
 
     /*Pushing student data to an array through an object*/
-    let cusValues=new CustomerModel(id,name,address,mobile);
+    let cusValues=new CustomerModel(id, name, address, mobile);
 
     customers.push(cusValues)
 
@@ -136,10 +136,12 @@ $("#cusUpdate").on('click',() => {
 
 
     let cusObj = customers[recordIndex];
-    cusObj._id = id
-    cusObj._name = name
-    cusObj._address = address
-    cusObj._mobile = mobile
+    cusObj.id = id
+    cusObj.name = name
+    cusObj.address = address
+    cusObj.mobile = mobile
+
+    console.log(customers)
 
     loadCustomers();
     $("#cusReset").click();
