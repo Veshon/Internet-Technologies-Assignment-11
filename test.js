@@ -1,6 +1,12 @@
 import CustomerModel from "../model/customerModel.js";
 import {customers} from "../db/customerDb.js";
 
+import ItemModel from "../model/itemModel.js";
+import {items} from "../db/itemDb.js";
+
+import PlaceOrderModel from "../model/placeOrderModel.js";
+import {orders} from "../db/placeOrderDb.js";
+
 let recordIndex;
 
 
@@ -112,8 +118,7 @@ $("#cusSubmit").on('click',() => {
     console.log(name);
     console.log(address);
     console.log(mobile)
-
-    /*Pushing student data to an array through an object*/
+    
     let cusValues=new CustomerModel(id, name, address, mobile);
 
     customers.push(cusValues)
@@ -140,9 +145,7 @@ $("#cusUpdate").on('click',() => {
     cusObj.name = name
     cusObj.address = address
     cusObj.mobile = mobile
-
-    console.log(customers)
-
+    
     loadCustomers();
     $("#cusReset").click();
 
@@ -160,8 +163,6 @@ $("#cusDelete").on('click',() => {
 
 
 ////////////////////////////////////////////////////////
-import ItemModel from "../model/itemModel.js";
-import {items} from "../db/itemDb.js";
 
 function loadAllItems() {
 
@@ -271,10 +272,6 @@ $("#itemDelete").on('click',() => {
 
 ////////////////////////////////////////////////////////
 
-import PlaceOrderModel from "../model/placeOrderModel.js";
-import {orders} from "../db/placeOrderDb.js";
-
-
 function loadAllOrders() {
 
     $('#orderTBody').empty()
@@ -326,7 +323,7 @@ $("#orderSave").on('click',() => {
     console.log(qty)
     console.log(total)
 
-    let orderValues= new ItemModel(id, itemCode, cusId, qtyOnHand, description, cusName, unitPrice, qty, total);
+    let orderValues= new PlaceOrderModel(id, itemCode, cusId, qtyOnHand, description, cusName, unitPrice, qty, total);
 
     orders.push(orderValues)
 
@@ -385,15 +382,15 @@ $("#orderUpdate").on('click',() => {
 
     let orderObj = orders[recordIndex];
 
-    orderObj.$id = id
-    orderObj.$itemCode = itemCode
-    orderObj.$cusId = cusId
-    orderObj.$qtyOnHand = qtyOnHand
-    orderObj.$description = itemDescription
-    orderObj.$cusName = cusName
-    orderObj.$unitPrice = unitPrice
-    orderObj.$qty = qty
-    orderObj.$total = total
+    orderObj._id = id
+    orderObj._itemCode = itemCode
+    orderObj._cusId = cusId
+    orderObj._qtyOnHand = qtyOnHand
+    orderObj._description = itemDescription
+    orderObj._cusName = cusName
+    orderObj._unitPrice = unitPrice
+    orderObj._qty = qty
+    orderObj._total = total
 
     loadAllOrders();
     $("#orderClear").click();
