@@ -1,8 +1,6 @@
+import CustomerModel from "../model/customerModel.js";
+import {customers} from "../db/customerDb.js";
 
-import {customers} from "../db/db.js";
-
-
-// var customers = [];
 let recordIndex;
 
 
@@ -65,10 +63,10 @@ function loadCustomers() {
     customers.map((item, index)=>{
 
         var record = `<tr>
-                  <td class="cusId-value">${item.$id}</td>
-                  <td class="cusName-value">${item.$name}</td>
-                  <td class="cusAddress-value">${item.$address}</td>
-                  <td class="cusMobile-value">${item.$mobile}</td>
+                  <td class="cusId-value">${item._id}</td>
+                  <td class="cusName-value">${item._name}</td>
+                  <td class="cusAddress-value">${item._address}</td>
+                  <td class="cusMobile-value">${item._mobile}</td>
                 </tr>`;
 
         $("#cusTBody").append(record)
@@ -116,12 +114,7 @@ $("#cusSubmit").on('click',() => {
     console.log(mobile)
 
     /*Pushing student data to an array through an object*/
-    let cusValues={
-        $id: id,
-        $name: name,
-        $address: address,
-        $mobile: mobile
-    }
+    let cusValues=new CustomerModel(id,name,address,mobile);
 
     customers.push(cusValues)
 
@@ -143,10 +136,10 @@ $("#cusUpdate").on('click',() => {
 
 
     let cusObj = customers[recordIndex];
-    cusObj.$id = id
-    cusObj.$name = name
-    cusObj.$address = address
-    cusObj.$mobile = mobile
+    cusObj._id = id
+    cusObj._name = name
+    cusObj._address = address
+    cusObj._mobile = mobile
 
     loadCustomers();
     $("#cusReset").click();
