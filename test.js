@@ -1,4 +1,8 @@
-var customers = []
+
+import {customers} from "../db/db.js";
+
+
+// var customers = [];
 let recordIndex;
 
 
