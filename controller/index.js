@@ -1,11 +1,11 @@
 import CustomerModel from "../model/customerModel.js";
-import {customers} from "../db/customerDb.js";
+import {customers} from "../db/db.js";
 
 import ItemModel from "../model/itemModel.js";
-import {items} from "../db/itemDb.js";
+import {items} from "../db/db.js";
 
 import PlaceOrderModel from "../model/placeOrderModel.js";
-import {orders} from "../db/placeOrderDb.js";
+import {orders} from "../db/db.js";
 
 let recordIndex;
 
