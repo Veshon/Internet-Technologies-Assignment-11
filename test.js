@@ -271,8 +271,8 @@ $("#itemDelete").on('click',() => {
 
 ////////////////////////////////////////////////////////
 
-var orders = []
-let recods;
+import PlaceOrderModel from "../model/placeOrderModel.js";
+import {orders} from "../db/placeOrderDb.js";
 
 
 function loadAllOrders() {
@@ -282,11 +282,11 @@ function loadAllOrders() {
     orders.map((item, index)=>{
 
         var record = `<tr>
-                  <td class="itemCode-value">${item.$itemCode}</td>
-                  <td class="description-value">${item.$description}</td>
-                  <td class="qtyOnHand-value">${item.$qtyOnHand}</td>
-                  <td class="unitPrice-value">${item.$unitPrice}</td>
-                  <td class="total-value">${item.$total}</td>
+                  <td class="itemCode-value">${item._itemCode}</td>
+                  <td class="description-value">${item._description}</td>
+                  <td class="qtyOnHand-value">${item._qtyOnHand}</td>
+                  <td class="unitPrice-value">${item._unitPrice}</td>
+                  <td class="total-value">${item._total}</td>
                 </tr>`;
 
         $("#orderTBody").append(record)
@@ -326,18 +326,7 @@ $("#orderSave").on('click',() => {
     console.log(qty)
     console.log(total)
 
-    /*Pushing student data to an array through an object*/
-    let orderValues={
-        $id: id,
-        $itemCode: itemCode,
-        $cusId: cusId,
-        $qtyOnHand: qtyOnHand,
-        $description: description,
-        $cusName: cusName,
-        $unitPrice: unitPrice,
-        $qty: qty,
-        $total: total
-    }
+    let orderValues= new ItemModel(id, itemCode, cusId, qtyOnHand, description, cusName, unitPrice, qty, total);
 
     orders.push(orderValues)
 
