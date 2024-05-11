@@ -227,7 +227,6 @@
                             </div>
                         </div>
 
-
                         <button style="position: absolute; top: 45vh; left: 57%; width: 100px; height: 50px" id="itemClear" type="reset" class="btn btn-warning">Clear</button>
 
                         <div style="position: absolute; top: 70px; left: 550px; width: 350px" class="col-lg-6 ">
@@ -283,8 +282,6 @@
             <div class="row">
                 <div class="col-lg-4">
 
-
-
                         <div style="height: 70px; position:absolute; left: 0px; width: 1000px"><h1 style="position: absolute; left: 35%">Place Order Form</h1></div>
 
                         <button style="position: absolute; top: 5px; left: 5px; border-radius: 100%; width: 50px; height: 50px" id="homeBtnOrder" type="button" class="btn btn-light"> <img src="assets/images/icons8-home-48.png" style="width: 30px; height: 30px;"> </button>
@@ -325,7 +322,25 @@
                         <input type="text" class="form-control" id="orderCusName">
                     </div>
 
-                    <button style="width: 80px; height: 55px; position:relative; top: 60px;" id="orderSave" type="button" class="btn btn-success">Add to cart</button>
+                    <button style="width: 80px; height: 55px; position:relative; top: 60px;" id="orderSavee" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addToCartModal">Add to cart</button>
+                    <div class="modal fade" id="addToCartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="addToCartModalLabel">Save Confirmation</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Do you want to save a new customer!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <button id="orderSave" type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <button style="width: 80px; height: 55px; position:relative; top: 60px;" id="orderUpdate" type="button" class="btn btn-primary">Update</button>
                     <button style="width: 80px; height: 55px; position:relative; top: 60px;" id="orderDelete" type="button" class="btn btn-danger">Delete</button>
                     <button style="width: 80px; height: 55px; position:relative; top: 60px;" id="orderClear" type="reset" class="btn btn-warning">Clear</button>
